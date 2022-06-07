@@ -1,7 +1,6 @@
 CREATE TABLE dw.fact_trans_film
 (
     film integer NOT NULL,
-    category integer NOT NULL,
     year integer NOT NULL,
     language integer NOT NULL,
     rating integer NOT NULL,
@@ -13,6 +12,17 @@ ALTER TABLE IF EXISTS dw.fact_trans_film
     OWNER to postgres;
 
 ----
+
+CREATE TABLE dw.factless_film_category
+(
+    film integer NOT NULL,
+    category integer NOT NULL,
+)
+
+ALTER TABLE IF EXISTS dw.factless_film_category
+    OWNER to postgres;
+
+---
 
 CREATE TABLE dw.fact_yearly_category
 (
