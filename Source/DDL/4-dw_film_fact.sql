@@ -16,7 +16,7 @@ ALTER TABLE IF EXISTS dw.fact_trans_film
 CREATE TABLE dw.factless_film_category
 (
     film integer NOT NULL,
-    category integer NOT NULL,
+    category integer NOT NULL
 )
 
 ALTER TABLE IF EXISTS dw.factless_film_category
