@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS dw.staff_tmp(
+CREATE TABLE IF NOT EXISTS dw.tmp_staff(
     staff_tmp_id INTEGER,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
@@ -15,8 +15,8 @@ DECLARE
     num_records integer;
 
 BEGIN
-    TRUNCATE TABLE dw.staff_tmp;
-    INSERT INTO dw.staff_tmp(staff_tmp_id, first_name, last_name, country, city, district)
+    TRUNCATE TABLE dw.tmp_staff;
+    INSERT INTO dw.tmp_staff(staff_tmp_id, first_name, last_name, country, city, district)
         SELECT staff.staff_id, staff.first_name, staff.
             last_name, country.country, city.city, address.district
         FROM public.staff 
@@ -28,7 +28,7 @@ BEGIN
         VALUES ('dim_staff', CURRENT_TIMESTAMP, 'data added to tmp table');
 
     IF EXISTS (
-        SELECT * FROM dw.staff_tmp
+        SELECT * FROM dw.tmp_staff
         WHERE country IS NULL or city IS NULL
     ) THEN
         -- IF THERE IS NO COUNTRY OR CITY FOR STAFF ADD AN ERROR LOG
@@ -40,9 +40,9 @@ BEGIN
     INSERT INTO dw.mart_payment_logs(filling_table, time_occured, description)
         VALUES ('dim_staff',  CURRENT_TIMESTAMP, 'old dim_staff truncated');
     INSERT INTO dw.dim_staff(id, first_name, last_name, country, city, district)
-        SELECT staff_tmp_id, first_name, last_name, country, city, district FROM dw.staff_tmp;
+        SELECT staff_tmp_id, first_name, last_name, country, city, district FROM dw.tmp_staff;
     
-    SELECT COUNT(*) INTO num_records FROM dw.staff_tmp;
+    SELECT COUNT(*) INTO num_records FROM dw.tmp_staff;
     INSERT INTO dw.mart_payment_logs(filling_table, time_occured, description)
         VALUES ('dim_staff',  CURRENT_TIMESTAMP, num_records || ' records added.');
 END
