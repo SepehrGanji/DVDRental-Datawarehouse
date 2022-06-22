@@ -24,6 +24,9 @@ BEGIN
         JOIN public.city ON city.city_id = address.city_id
         JOIN public.country ON city.country_id = country.country_id;
 
+    INSERT INTO dw.mart_payment_logs(filling_table, time_occured, description)
+        VALUES ('dim_staff', CURRENT_TIMESTAMP, 'data added to tmp table');
+
     IF EXISTS (
         SELECT * FROM dw.staff_tmp
         WHERE country IS NULL or city IS NULL
@@ -34,6 +37,8 @@ BEGIN
 
     END IF;
     TRUNCATE TABLE dw.dim_staff;
+    INSERT INTO dw.mart_payment_logs(filling_table, time_occured, description)
+        VALUES ('dim_staff',  CURRENT_TIMESTAMP, 'old dim_staff truncated');
     INSERT INTO dw.dim_staff(id, first_name, last_name, country, city, district)
         SELECT staff_tmp_id, first_name, last_name, country, city, district FROM dw.staff_tmp;
     
