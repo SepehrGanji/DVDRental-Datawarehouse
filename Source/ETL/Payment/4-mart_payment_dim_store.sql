@@ -12,6 +12,9 @@ CREATE PROCEDURE dw.fill_sotre()
 LANGUAGE plpgsql
 AS
 $$
+DECLARE
+    num_records integer;
+
 BEGIN
     TRUNCATE TABLE dw.tmp_store;
     INSERT INTO dw.tmp_store(id, manager_firstname, manager_lastname, country, city, district)
@@ -40,8 +43,9 @@ BEGIN
         SELECT id, manager_firstname, manager_lastname, country, city, district
         FROM dw.tmp_store;
         
+    SELECT COUNT(*) INTO num_records FROM dw.tmp_store;
     INSERT INTO dw.mart_payment_logs(filling_table, time_occured, description)
-        VALUES ('dim_store', CURRENT_TIMESTAMP, 'data added to dim_store table');
+        VALUES ('dim_store', CURRENT_TIMESTAMP, num_records || ' data added to dim_store table');
 
 
 END
