@@ -16,21 +16,23 @@ BEGIN
 END
 $$;
 
+CREATE TABLE dw.tmp_date(
+    date_ DATE
+);
+
 CREATE PROCEDURE dw.fill_date_from_last_available(number_of_days INT)
 LANGUAGE plpgsql AS
 $$
 DECLARE
     last_available DATE;
 BEGIN
-    DROP TABLE IF EXISTS tmp1; 
-    CREATE TABLE tmp1(
-        date_ DATE
-    );
-    INSERT INTO tmp1
+    TRUNCATE TABLE dw.tmp_date; 
+
+    INSERT INTO dw.tmp_date
         SELECT TO_DATE(CONCAT(day::text, '-', month::text, '-', year::text), 'DD-MM-YYYY')
         FROM dw.dim_date;
-    IF EXISTS (SELECT * FROM tmp1) THEN
-        SELECT MAX(date_) INTO last_available FROM tmp1;
+    IF EXISTS (SELECT * FROM dw.tmp_date) THEN
+        SELECT MAX(date_) INTO last_available FROM dw.tmp_date;
     ELSE
         SELECT MIN(payment_date) INTO last_available FROM public.payment;
     END IF;
