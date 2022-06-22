@@ -53,7 +53,7 @@ INSERT INTO dw.dim_country(id, country_name) VALUES
 	(47, 'Colombia'),
 	(48, 'Comoros'),
 	(49, 'Congo'),
-	(50, 'The Democratic Republic of Congo'),
+	(50, 'Congo, The Democratic Republic of the'),
 	(51, 'Cook Islands'),
 	(52, 'Costa Rica'),
 	(53, 'Ivory Coast'),
@@ -117,7 +117,7 @@ INSERT INTO dw.dim_country(id, country_name) VALUES
 	(111, 'Japan'),
 	(112, 'Jersey'),
 	(113, 'Jordan'),
-	(114, 'Kazakhstan'),
+	(114, 'Kazakstan'),
 	(115, 'Kenya'),
 	(116, 'Kiribati'),
 	(117, 'Kuwait'),
@@ -251,7 +251,10 @@ INSERT INTO dw.dim_country(id, country_name) VALUES
 	(245, 'Western Sahara'),
 	(246, 'Yemen'),
 	(247, 'Zambia'),
-	(248, 'Zimbabwe');
+	(248, 'Zimbabwe'),
+    (249, 'Runion'),
+    (250, 'Taiwan'),
+    (251, 'Yugoslavia');
 END
 
 
