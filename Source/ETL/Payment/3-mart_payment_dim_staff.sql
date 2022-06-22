@@ -11,6 +11,9 @@ CREATE PROCEDURE dw.fill_staff()
 LANGUAGE plpgsql
 AS
 $$
+DECLARE
+    num_records integer;
+
 BEGIN
     TRUNCATE TABLE dw.staff_tmp;
     INSERT INTO dw.staff_tmp(staff_tmp_id, first_name, last_name, country, city, district)
@@ -33,6 +36,9 @@ BEGIN
     TRUNCATE TABLE dw.dim_staff;
     INSERT INTO dw.dim_staff(id, first_name, last_name, country, city, district)
         SELECT staff_tmp_id, first_name, last_name, country, city, district FROM dw.staff_tmp;
-
+    
+    SELECT COUNT(*) INTO num_records FROM DW.staff_tmp;
+    INSERT INTO dw.mart_payment_logs(filling_table, time_occured, description)
+        VALUES ('dim_staff',  CURRENT_TIMESTAMP, num_records || ' records added.');
 END
 $$
