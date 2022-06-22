@@ -17,7 +17,7 @@ CREATE TABLE dw.dim_customer
     id integer NOT NULL,
     first_name character varying(50) NOT NULL,
     last_name character varying(50) NOT NULL,
-    country character varying(40) NOT NULL,
+    country character varying(64) NOT NULL,
     city character varying(40) NOT NULL,
     district character varying(20) NOT NULL,
     PRIMARY KEY (id)
@@ -49,7 +49,7 @@ CREATE TABLE dw.dim_store
     id integer NOT NULL,
     manager_firstname character varying(50) NOT NULL,
     manager_lastname character varying(50) NOT NULL,
-    country character varying(40) NOT NULL,
+    country character varying(64) NOT NULL,
     city character varying(40) NOT NULL,
     district character varying(20) NOT NULL,
     PRIMARY KEY (id)
@@ -63,7 +63,7 @@ ALTER TABLE IF EXISTS dw.dim_store
 CREATE TABLE dw.dim_country
 (
     id integer NOT NULL,
-    country_name character varying(40) NOT NULL,
+    country_name character varying(64) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -77,7 +77,7 @@ CREATE TABLE dw.dim_staff
     id integer NOT NULL,
     first_name character varying(50) NOT NULL,
     last_name character varying(50) NOT NULL,
-    country character varying(40) NOT NULL,
+    country character varying(64) NOT NULL,
     city character varying(40) NOT NULL,
     district character varying(20) NOT NULL,
     PRIMARY KEY (id)
