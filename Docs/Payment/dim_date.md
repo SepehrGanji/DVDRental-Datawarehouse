@@ -1,8 +1,11 @@
-# date
+# dim_date
 Dates of payments
 
-## fields
-year, month, day
+## Fields
+id(integer): surrogate key for date
+year(integer): the year of payemnt
+month(integer): the month of payement
+day(integer): the day of payement
 
 
 ## Procedures 
