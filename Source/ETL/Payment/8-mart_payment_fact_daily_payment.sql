@@ -46,7 +46,7 @@ BEGIN
         SELECT dim_customer.id, dim_store.id
         FROM dw.dim_customer CROSS JOIN dw.dim_store;
 
-    WHILE curr_date < to_date do LOOP
+    WHILE curr_date < to_date LOOP
 
         INSERT INTO dw.mart_payment_logs(filling_table, time_occured, description)
             VALUES ('fact_daily_payment', CURRENT_TIMESTAMP, 'adding data of ' || curr_date);
