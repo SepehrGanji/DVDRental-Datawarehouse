@@ -1,3 +1,8 @@
+CREATE TABLE dw.fact_daily_payment_last_update(
+    last_update date
+);
+
+
 CREATE TABLE dw.tmp_fact_daily_payment_1
 (
     date integer,
@@ -70,6 +75,9 @@ BEGIN
         curr_date := curr_date + INTERVAL '1 day';
 
     END LOOP;
+    TRUNCATE TABLE dw.fact_daily_payment_last_update;
+    INSERT INTO dw.fact_daily_payment_last_update(last_update)
+        VALUES (to_date);
 
 END
 $$
