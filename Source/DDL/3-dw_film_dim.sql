@@ -38,7 +38,7 @@ CREATE TABLE dw.dim_rating
 (
     id serial NOT NULL,
     type character varying(10) NOT NULL,
-    age smallint NOT NULL,
+    age character varying(10) NOT NULL,
     PRIMARY KEY (id)
 );
 
