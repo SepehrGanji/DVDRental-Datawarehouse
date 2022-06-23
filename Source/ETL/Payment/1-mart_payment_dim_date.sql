@@ -33,10 +33,10 @@ BEGIN
         FROM dw.dim_date;
     IF EXISTS (SELECT * FROM dw.tmp_date) THEN
         SELECT MAX(date_) INTO last_available FROM dw.tmp_date;
+        last_available := last_available + INTERVAL '1 day';
     ELSE
         SELECT MIN(payment_date) INTO last_available FROM public.payment;
     END IF;
-    last_available := last_available + INTERVAL '1 day';
     CALL fill_payment_dim_date(last_available, number_of_days);
 END
 $$;
