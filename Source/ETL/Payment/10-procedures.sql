@@ -1,4 +1,4 @@
-CREATE PROCEDURE fill_tables_first_time()
+CREATE PROCEDURE dw.fill_tables_first_time()
 LANGUAGE plpgsql
 AS
 $$
@@ -22,7 +22,7 @@ BEGIN
 END
 $$;
 
-CREATE PROCEDURE fill_tables()
+CREATE PROCEDURE dw.fill_tables()
 LANGUAGE plpgsql
 AS
 $$
