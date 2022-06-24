@@ -37,6 +37,6 @@ BEGIN
     ELSE
         SELECT MIN(payment_date) INTO last_available FROM public.payment;
     END IF;
-    CALL fill_payment_dim_date(last_available, number_of_days);
+    CALL dw.fill_payment_dim_date(last_available, number_of_days);
 END
 $$;
