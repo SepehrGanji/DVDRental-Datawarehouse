@@ -4,7 +4,7 @@ Connects films to categories
 
 ## Fields
 
-film(integer): film id
+film(integer): film id \
 category(integer): category id
 
 ## Procedures

@@ -4,9 +4,9 @@ Accumulative fact based on categories
 
 ## Fields
 
-category(int): category id
-film_count(int): number of films
-rate_avg(numeric): the average rate of films
+category(int): category id \
+film_count(int): number of films \
+rate_avg(numeric): the average rate of films \
 length_avg(numeric): the average length of films
 
 ## Procedures

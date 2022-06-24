@@ -4,7 +4,7 @@ Categories of films
 
 ## Fields
 
-id(integer): surrogate key for category
+id(integer): surrogate key for category \
 category_name(varchar25): the name of category
 
 ## Procedures

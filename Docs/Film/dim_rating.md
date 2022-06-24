@@ -4,8 +4,8 @@ Ratings of films
 
 ## Fields
 
-id(integer): surrogate key for language
-type(varchar10): the type of rating
+id(integer): surrogate key for language \
+type(varchar10): the type of rating \
 age(varchar10): the specific age
 
 ## Procedures
