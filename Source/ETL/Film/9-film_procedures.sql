@@ -13,7 +13,7 @@ BEGIN
     call dw.fill_fact_trans_film();
     call dw.fill_factless_film_category();
     call dw.fill_fact_yearly_category(from_year, to_year);
-    call dw.fill_fact_acc_category()
+    call dw.fill_fact_acc_category();
 END
 $$;
 
@@ -31,6 +31,6 @@ BEGIN
     call dw.fill_fact_trans_film();
     call dw.fill_factless_film_category();
     call dw.fill_fact_yearly_category(from_year, to_year);
-    call dw.fill_fact_acc_category()
+    call dw.fill_fact_acc_category();
 END
 $$
