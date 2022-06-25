@@ -15,4 +15,4 @@ length(smallint): length of the film
 
 ### fill_fact_trans_film
 
-Scans and inserts the films into fact table
+Scans and inserts the films into fact table from joining film and film_category on film_id, then joining and concating type and age of category.

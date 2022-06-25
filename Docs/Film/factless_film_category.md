@@ -11,4 +11,4 @@ category(integer): category id
 
 ### fill_factless_film_category
 
-Scans and inserts the records relating films to categories
+Scans and inserts the records relating films to categories by silmple selecting from film_category.

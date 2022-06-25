@@ -13,4 +13,4 @@ length_avg(numeric): the average length of films
 
 ### fill_fact_yearly_category
 
-Fills the fact table based on the information stored in yearly fact
+Fills the fact table based on the information stored in yearly fact by selecting from yearly fact, sum over all rates divided by count, sum over all lenghts divided by count and grouping by category.
